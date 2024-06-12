@@ -1,7 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
-public class SignUp extends JFrame {
+public class SignUp extends JFrame implements ActionListener {
+
+    JButton create, back;
+    JTextField inputName, inputUsername, inputPassword, inputanswer;
+    Choice security;
 
     SignUp() {
         setBounds(350, 200, 900, 360);
@@ -19,7 +24,7 @@ public class SignUp extends JFrame {
         userName.setBounds(50, 20, 125, 25);
         p1.add(userName);
 
-        JTextField inputUsername = new JTextField();
+        inputUsername = new JTextField();
         inputUsername.setBounds(190, 20, 180, 25);
         inputUsername.setBorder(BorderFactory.createEmptyBorder());
         p1.add(inputUsername);
@@ -29,7 +34,7 @@ public class SignUp extends JFrame {
         name.setBounds(50, 60, 125, 25);
         p1.add(name);
 
-        JTextField inputName = new JTextField();
+        inputName = new JTextField();
         inputName.setBounds(190, 60, 180, 25);
         inputName.setBorder(BorderFactory.createEmptyBorder());
         p1.add(inputName);
@@ -39,7 +44,7 @@ public class SignUp extends JFrame {
         password.setBounds(50, 100, 125, 25);
         p1.add(password);
 
-        JTextField inputPassword = new JTextField();
+        inputPassword = new JTextField();
         inputPassword.setBounds(190, 100, 180, 25);
         inputPassword.setBorder(BorderFactory.createEmptyBorder());
         p1.add(inputPassword);
@@ -63,25 +68,27 @@ public class SignUp extends JFrame {
         answer.setBounds(50, 180, 125, 25);
         p1.add(answer);
 
-        JTextField inputanswer = new JTextField();
+        inputanswer = new JTextField();
         inputanswer.setBounds(190, 180, 180, 25);
         inputanswer.setBorder(BorderFactory.createEmptyBorder());
         p1.add(inputanswer);
 
-        JButton create = new JButton("Create");
+        create = new JButton("Create");
         create.setBackground(Color.WHITE);
         create.setForeground(new Color(133, 193, 233));
         create.setFont(new Font("Tahoma", Font.BOLD, 14));
         create.setBorder(BorderFactory.createEmptyBorder());
-        create.setBounds(80, 250, 100, 30 );
+        create.setBounds(80, 250, 100, 30);
+        create.addActionListener(this);
         p1.add(create);
 
-        JButton back = new JButton("Back");
+        back = new JButton("Back");
         back.setBackground(Color.WHITE);
         back.setForeground(new Color(133, 193, 233));
         back.setFont(new Font("Tahoma", Font.BOLD, 14));
         back.setBorder(BorderFactory.createEmptyBorder());
-        back.setBounds(250, 250, 100, 30 );
+        back.setBounds(250, 250, 100, 30);
+        back.addActionListener(this);
         p1.add(back);
 
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/signup.png"));
@@ -92,6 +99,20 @@ public class SignUp extends JFrame {
         add(image);
 
         setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == create) {
+            String userName = inputUsername.getText();
+            String name = inputName.getText();
+            String password = inputPassword.getText();
+            String question = security.getSelectedItem();
+            String answer = inputanswer.getText();
+            
+        } else if (ae.getSource() == back) {
+            setVisible(false);
+            new Login();
+        }
     }
 
     public static void main(String[] args) {
