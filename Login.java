@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import javax.swing.border.*;
 
 public class Login extends JFrame {
     Login() {
@@ -24,8 +25,54 @@ public class Login extends JFrame {
 
         JPanel p2 = new JPanel();
         p2.setLayout(null);
-        p2.setBounds(400, 30, 450, 250);
+        p2.setBounds(400, 30, 450, 260);
         add(p2);
+
+        JLabel username = new JLabel("Username");
+        username.setBounds(60, 10, 100, 25);
+        username.setFont(new Font("SAN SARIF", Font.PLAIN, 20));
+        p2.add(username);
+
+        JTextField inputusername = new JTextField();
+        inputusername.setBounds(60, 40, 300, 30);
+        inputusername.setBorder(BorderFactory.createEmptyBorder());
+        p2.add(inputusername);
+
+        JLabel password = new JLabel("Password");
+        password.setBounds(60, 90, 100, 25);
+        password.setFont(new Font("SAN SARIF", Font.PLAIN, 20));
+        p2.add(password);
+
+        JTextField inputpassword = new JTextField();
+        inputpassword.setBounds(60, 120, 300, 30);
+        inputpassword.setBorder(BorderFactory.createEmptyBorder());
+        p2.add(inputpassword);
+
+        JButton login = new JButton("Login");
+        login.setBounds(60, 165, 120, 30);
+        login.setBackground(new Color(100, 190, 220));
+        login.setBorder(new LineBorder(new Color(133, 193, 233)));
+        login.setForeground(Color.WHITE);
+        p2.add(login);
+
+        JButton signup = new JButton("Sign Up");
+        signup.setBounds(240, 165, 120, 30);
+        signup.setBackground(new Color(100, 190, 220));
+        signup.setBorder(new LineBorder(new Color(133, 193, 233)));
+        signup.setForeground(Color.WHITE);
+        p2.add(signup);
+
+        JButton forgetPassword = new JButton("Forget Password");
+        forgetPassword.setBounds(145, 210, 130, 30);
+        forgetPassword.setBackground(new Color(100, 190, 220));
+        forgetPassword.setBorder(new LineBorder(new Color(133, 193, 233)));
+        forgetPassword.setForeground(Color.WHITE);
+        p2.add(forgetPassword);
+
+        JLabel text =new JLabel("Trouble in login...");
+        text.setBounds(300, 215, 150, 20);
+        text.setForeground(Color.RED);
+        p2.add(text);
 
         setVisible(true);
     }
