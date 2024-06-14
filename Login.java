@@ -69,7 +69,7 @@ public class Login extends JFrame {
         forgetPassword.setForeground(Color.WHITE);
         p2.add(forgetPassword);
 
-        JLabel text =new JLabel("Trouble in login...");
+        JLabel text = new JLabel("Trouble in login...");
         text.setBounds(300, 215, 150, 20);
         text.setForeground(Color.RED);
         p2.add(text);
@@ -78,6 +78,6 @@ public class Login extends JFrame {
     }
 
     public static void main(String[] args) {
-        Login l = new Login();
+        new Login();
     }
 }
