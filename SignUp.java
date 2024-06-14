@@ -4,9 +4,10 @@ import java.awt.event.*;
 
 public class SignUp extends JFrame implements ActionListener {
 
-    JButton create, back;
-    JTextField inputName, inputUsername, inputPassword, inputanswer;
     Choice security;
+    JButton create, back;
+    JTextField inputName, inputUsername, inputanswer;
+    JPasswordField inputPassword;
 
     SignUp() {
         setBounds(350, 200, 900, 360);
@@ -44,7 +45,7 @@ public class SignUp extends JFrame implements ActionListener {
         password.setBounds(50, 100, 125, 25);
         p1.add(password);
 
-        inputPassword = new JTextField();
+        inputPassword = new JPasswordField();
         inputPassword.setBounds(190, 100, 180, 25);
         inputPassword.setBorder(BorderFactory.createEmptyBorder());
         p1.add(inputPassword);
@@ -54,13 +55,12 @@ public class SignUp extends JFrame implements ActionListener {
         labelSecurity.setBounds(50, 140, 125, 25);
         p1.add(labelSecurity);
 
-        Choice security = new Choice();
+        security = new Choice();
         security.add("Your Fav Teacher");
         security.add("Your Fav Marvel Hero");
         security.add("Your Best friend Name");
         security.add("Your city Name");
         security.setBounds(190, 140, 180, 25);
-        // security.setBorder(BorderFactory.createEmptyBorder());
         p1.add(security);
 
         JLabel answer = new JLabel("Answer");
@@ -105,10 +105,21 @@ public class SignUp extends JFrame implements ActionListener {
         if (ae.getSource() == create) {
             String userName = inputUsername.getText();
             String name = inputName.getText();
-            String password = inputPassword.getText();
+            String password = new String(inputPassword.getPassword()); // Get the password as a string
             String question = security.getSelectedItem();
             String answer = inputanswer.getText();
-            
+
+            String query = "insert into account values ('" + userName + "', '" + name + "', '" + password
+                    + "', '" + question + "', '" + answer + "')";
+            try {
+                Conn c = new Conn();
+                c.s.executeUpdate(query);
+                JOptionPane.showMessageDialog(null, "Account Created Successfully");
+                setVisible(false);
+                new Login();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } else if (ae.getSource() == back) {
             setVisible(false);
             new Login();
