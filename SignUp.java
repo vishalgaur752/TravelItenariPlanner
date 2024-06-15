@@ -6,7 +6,7 @@ public class SignUp extends JFrame implements ActionListener {
 
     Choice security;
     JButton create, back;
-    JTextField inputName, inputUsername, inputanswer;
+    JTextField inputname, inputusername, inputanswer;
     JPasswordField inputPassword;
 
     SignUp() {
@@ -20,25 +20,25 @@ public class SignUp extends JFrame implements ActionListener {
         p1.setLayout(null);
         add(p1);
 
-        JLabel userName = new JLabel("Username");
-        userName.setFont(new Font("Tahoma", Font.BOLD, 14));
-        userName.setBounds(50, 20, 125, 25);
-        p1.add(userName);
+        JLabel username = new JLabel("Username");
+        username.setFont(new Font("Tahoma", Font.BOLD, 14));
+        username.setBounds(50, 20, 125, 25);
+        p1.add(username);
 
-        inputUsername = new JTextField();
-        inputUsername.setBounds(190, 20, 180, 25);
-        inputUsername.setBorder(BorderFactory.createEmptyBorder());
-        p1.add(inputUsername);
+        inputusername = new JTextField();
+        inputusername.setBounds(190, 20, 180, 25);
+        inputusername.setBorder(BorderFactory.createEmptyBorder());
+        p1.add(inputusername);
 
         JLabel name = new JLabel("Name");
         name.setFont(new Font("Tahoma", Font.BOLD, 14));
         name.setBounds(50, 60, 125, 25);
         p1.add(name);
 
-        inputName = new JTextField();
-        inputName.setBounds(190, 60, 180, 25);
-        inputName.setBorder(BorderFactory.createEmptyBorder());
-        p1.add(inputName);
+        inputname = new JTextField();
+        inputname.setBounds(190, 60, 180, 25);
+        inputname.setBorder(BorderFactory.createEmptyBorder());
+        p1.add(inputname);
 
         JLabel password = new JLabel("Password");
         password.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -103,8 +103,8 @@ public class SignUp extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == create) {
-            String userName = inputUsername.getText();
-            String name = inputName.getText();
+            String userName = inputusername.getText();
+            String name = inputname.getText();
             String password = new String(inputPassword.getPassword()); // Get the password as a string
             String question = security.getSelectedItem();
             String answer = inputanswer.getText();
