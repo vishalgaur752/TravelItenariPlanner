@@ -1,8 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
-public class Dasboard extends JFrame{
-    Dasboard() {
+public class Dasboard extends JFrame implements ActionListener{
+
+    String username;
+    JButton addPersonalDetails;
+
+    Dasboard(String username) {
+        this.username = username;
         // setBounds(0, 0, 1600, 1000);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLayout(null);
@@ -26,12 +32,13 @@ public class Dasboard extends JFrame{
         p2.setBounds(0, 55, 300, 900);
         add(p2);
 
-        JButton addPersonalDetails = new JButton("Add Personal Deatils");
+        addPersonalDetails = new JButton("Add Personal Deatils");
         addPersonalDetails.setBounds(0, 0, 300, 50);
         addPersonalDetails.setBackground(new Color(0, 0, 102));
         addPersonalDetails.setForeground(Color.WHITE);
         addPersonalDetails.setFont(new Font("Tahoma", Font.PLAIN, 20));
         addPersonalDetails.setMargin(new Insets(0, 0, 0, 60));
+        addPersonalDetails.addActionListener(this);
         p2.add(addPersonalDetails);
 
         JButton updatePersonalDetails = new JButton("Update Personal Deatils");
@@ -162,7 +169,13 @@ public class Dasboard extends JFrame{
         setVisible(true);
     }
 
+    public void actionPerformed(ActionEvent ae) {
+        if(ae.getSource() == addPersonalDetails) {
+            new AddCustomer(username);
+        }
+    }
+
     public static void main(String[] args) {
-       new Dasboard();
+       new Dasboard("");
     }
 }
