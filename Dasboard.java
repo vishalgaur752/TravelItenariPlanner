@@ -5,7 +5,7 @@ import java.awt.event.*;
 public class Dasboard extends JFrame implements ActionListener{
 
     String username;
-    JButton addPersonalDetails;
+    JButton addPersonalDetails, viewPersonalDetails, updatePersonalDetails;
 
     Dasboard(String username) {
         this.username = username;
@@ -41,20 +41,22 @@ public class Dasboard extends JFrame implements ActionListener{
         addPersonalDetails.addActionListener(this);
         p2.add(addPersonalDetails);
 
-        JButton updatePersonalDetails = new JButton("Update Personal Deatils");
+        updatePersonalDetails = new JButton("Update Personal Deatils");
         updatePersonalDetails.setBounds(0, 49, 300, 50);
         updatePersonalDetails.setBackground(new Color(0, 0, 102));
         updatePersonalDetails.setForeground(Color.WHITE);
         updatePersonalDetails.setFont(new Font("Tahoma", Font.PLAIN, 20));
         updatePersonalDetails.setMargin(new Insets(0, 0, 0, 30));
+        updatePersonalDetails.addActionListener(this);
         p2.add(updatePersonalDetails);
 
-        JButton viewPersonalDetails = new JButton("View Deatils");
+        viewPersonalDetails = new JButton("View Deatils");
         viewPersonalDetails.setBounds(0, 98, 300, 50);
         viewPersonalDetails.setBackground(new Color(0, 0, 102));
         viewPersonalDetails.setForeground(Color.WHITE);
         viewPersonalDetails.setFont(new Font("Tahoma", Font.PLAIN, 20));
         viewPersonalDetails.setMargin(new Insets(0, 0, 0, 130));
+        viewPersonalDetails.addActionListener(this);
         p2.add(viewPersonalDetails);
 
         JButton deletePersonalDetails = new JButton("Delete Personal Deatils");
@@ -172,6 +174,10 @@ public class Dasboard extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent ae) {
         if(ae.getSource() == addPersonalDetails) {
             new AddCustomer(username);
+        } else if(ae.getSource() == viewPersonalDetails) {
+            new ViewCustomer(username);
+        } else if(ae.getSource() == updatePersonalDetails) {
+            new UpdateCustomer(username);
         }
     }
 
