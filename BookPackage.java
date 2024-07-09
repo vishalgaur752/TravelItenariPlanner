@@ -1,6 +1,4 @@
 import javax.swing.*;
-import javax.swing.text.*;
-
 import java.awt.event.*;
 import java.sql.*;
 import java.awt.*;

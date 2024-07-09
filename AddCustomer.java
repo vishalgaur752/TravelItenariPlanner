@@ -15,6 +15,7 @@ public class AddCustomer extends JFrame implements ActionListener{
     JRadioButton male, female;
     JButton add, back;
 
+    @SuppressWarnings("rawtypes")
     AddCustomer(String username) {
         setBounds(450, 200, 850, 550);
         setLayout(null);
