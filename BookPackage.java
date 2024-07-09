@@ -11,7 +11,7 @@ public class BookPackage  extends JFrame implements ActionListener{
     JLabel labelUsername, labelid, labelnumber, lblphone, lblprice, labelprice, labelphone;
     JButton checkprice, bookpackage, back;
 
-    BookPackage() {
+    BookPackage(String username2) {
         // this.username = username;
         setBounds(350, 200, 1100, 500);
         setLayout(null);
@@ -166,6 +166,6 @@ public class BookPackage  extends JFrame implements ActionListener{
         
     }
     public static void main(String[] args) {
-        new BookPackage();
+        new BookPackage("");
     }
 }
