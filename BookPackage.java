@@ -1,16 +1,20 @@
 import javax.swing.*;
+import javax.swing.text.*;
+
 import java.awt.event.*;
 import java.sql.*;
 import java.awt.*;
 
 public class BookPackage  extends JFrame implements ActionListener{
+    private static final int Image_SCALE_DEFAULT = 0;
     Choice cpackage;
     JTextField tfpersons;
     String username;
-    JLabel labelUsername, labelid, labelnumber, lblphone, lblprice;
+    JLabel labelUsername, labelid, labelnumber, lblphone, lblprice, labelprice, labelphone;
     JButton checkprice, bookpackage, back;
+
     BookPackage() {
-        this.username = username;
+        // this.username = username;
         setBounds(350, 200, 1100, 500);
         setLayout(null);
         getContentPane().setBackground(Color.WHITE);
@@ -75,7 +79,7 @@ public class BookPackage  extends JFrame implements ActionListener{
         lblphone.setFont(new Font("Tahoma", Font.PLAIN, 16));
         add(lblphone);
 
-        JLabel labelphone = new JLabel();
+        labelphone = new JLabel();
         labelphone.setBounds(250, 270, 200, 25);
         add(labelphone);
 
@@ -84,7 +88,7 @@ public class BookPackage  extends JFrame implements ActionListener{
         lblprice.setFont(new Font("Tahoma", Font.PLAIN, 16));
         add(lblprice);
 
-        JLabel labelprice = new JLabel();
+        labelprice = new JLabel();
         labelprice.setBounds(220, 310, 150, 25);
         // labelnumber.setFont(new Font("Tahoma", Font.PLAIN, 16));
         add(labelprice);
@@ -123,14 +127,21 @@ public class BookPackage  extends JFrame implements ActionListener{
         back.setBounds(340, 380, 120, 25);
         back.addActionListener(this);
         add(back);
+        
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/bookpackage.jpg"));
+        Image i2 = i1.getImage().getScaledInstance(600, 500, Image_SCALE_DEFAULT);
+        ImageIcon i3 = new ImageIcon(i2);
+        JLabel image = new JLabel(i3);
+        image.setBounds(550, 30, 500, 400);
+        add(image);
 
         setVisible(true);
     }
 
     public void actionPerformed(ActionEvent ae) {
+        int cost = 0;
         if(ae.getSource() == checkprice) {
             String pack = cpackage.getSelectedItem();
-            int cost = 0;
             if(pack.equals("Gold Package")) {
                 cost += 12000;
             } else if (pack.equals("Silver Package")) {
@@ -138,8 +149,19 @@ public class BookPackage  extends JFrame implements ActionListener{
             } else {
                 cost += 32000;
             }
-        } else if (ae.getSource() == bookpackage) {
 
+            int persons = Integer.parseInt(tfpersons.getText());
+            cost*=persons;
+            labelprice.setText("Rs "+ cost);
+        } else if (ae.getSource() == bookpackage) {
+            try{
+                Conn c = new Conn();
+                c.s.executeUpdate("insert into bookpackage values(' "+labelUsername.getText()+"', '"+cpackage.getSelectedItem()+"', '"+tfpersons.getText()+"', '"+labelid.getText()+"', '"+labelnumber.getText()+"', '"+labelphone.getText()+"', '"+labelprice.getText()+"')");
+                JOptioPane.showMessageDialog(null, "Package Booked Successfully");
+                setVisible(false);
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
         } else {
             setVisible(false);
         }
