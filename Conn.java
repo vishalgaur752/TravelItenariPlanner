@@ -12,7 +12,7 @@ public class Conn {
         // Step 5: Closing the connectivity (optional)
         try {
             Class.forName("com.mysql.cj.jdbc.Driver"); // Step 1
-            c = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelmanagementSystem", "root", "Vishal@54321"); // Step 2
+            c = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelmanagementSystem", "root", "Password"); // Step 2
             s = c.createStatement(); // Step 3
         } catch (Exception e) {
             e.printStackTrace();
